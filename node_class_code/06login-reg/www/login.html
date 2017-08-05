@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./jquery.min.js"></script>
+</head>
+
+<body>
+    <div>
+        <div>
+            用户名: <input type="text" name="username" id="">
+        </div>
+        <div>
+            密码: <input type="text" name="pwd" id="">
+        </div>
+        <div>
+            <button id="login_btn">登录</button> <button id="reg_btn">注册</button>
+        </div>
+    </div>
+    <script>
+        // 当你请求的路径 localhost:8080/user?act=login ==> 登录
+        // 当你请求的路径 localhost:8080/user?act=reg   ==> 注册
+        // localhost:8080/login.html
+        $('#login_btn').click(function() {
+            var username = $('[name=username]').val();
+            var pwd = $('[name=pwd]').val();
+            $.ajax({
+                url: 'http://localhost:8080/user',
+                method: 'POST',
+                data: {
+                    act: 'login',
+                    username: username,
+                    pwd: pwd
+                },
+                dataType: 'json',
+                success: function(data) {
+                    // {“status”:true,msg:'成功原因'}
+                    // {status:false,msg:'失败原因'}
+                    alert(data.msg);
+                }
+            })
+        })
+
+        $('#reg_btn').click(function() {
+            var username = $('[name=username]').val();
+            var pwd = $('[name=pwd]').val();
+            $.ajax({
+                url: 'http://localhost:8080/user',
+                method: 'POST',
+                data: {
+                    act: 'reg',
+                    username: username,
+                    pwd: pwd
+                },
+                dataType: 'json',
+                success: function(data) {
+                    // {“status”:true,msg:'成功原因'}
+                    // {status:false,msg:'失败原因'}
+                    alert(data.msg);
+                }
+            })
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,11 @@
+{
+  "name": "testnpm0528",
+  "version": "1.0.0",
+  "description": "这是一个强大的npm模块，测试专用，千万别下，谁下谁怀孕",
+  "main": "testnpm0528.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
